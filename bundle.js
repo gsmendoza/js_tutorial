@@ -3,12 +3,13 @@ function palindromeTester() {
   let Phrase = require('gsmendoza-palindrome');
   let string = prompt("Please enter a string for palindrome testing:");
   let phrase = new Phrase(string);
+  let palindromeResult = document.querySelector('#palindromeResult');
 
   if (phrase.palindrome()) {
-    alert(`"${phrase.content}" is a palindrome`);
+    palindromeResult.innerHTML = `<strong>"${phrase.content}"</strong> is a palindrome`;
   }
   else {
-    alert(`"${phrase.content}" is not a palindrome`);
+    palindromeResult.innerHTML = `<strong>"${phrase.content}"</strong> is not a palindrome`;
   }
 }
 
