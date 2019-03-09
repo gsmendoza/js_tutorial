@@ -1,0 +1,14 @@
+#!/usr/bin/node
+
+let request = require("request");
+let Phrase = require("gsmendoza-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt'
+
+request(url, function(_error, _response, body) {
+  let lines = body.split("\n");
+  let palindromes = lines.filter(line => { return (new Phrase(line)).palindrome() });
+
+  palindromes.forEach(function(palindrome) {
+    console.log("palindrome detected:", palindrome);
+  });
+});
