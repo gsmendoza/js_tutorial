@@ -1,0 +1,19 @@
+#!/usr/bin/node
+
+let fs = require("fs");
+let Phrase = require("gsmendoza-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+
+let palindromes = text.split("\n").filter(function(line) {
+  let phrase = new Phrase(line);
+
+  return phrase.palindrome();
+});
+
+let printOut = palindromes.join("\n");
+
+fs.writeFile('palindrome.txt', printOut, function (err) {
+  if (err) throw err;
+  console.log(printOut);
+});
